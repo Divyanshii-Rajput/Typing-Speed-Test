@@ -62,8 +62,21 @@ const App = () => {
     const randomSentence =
       sentences[difficulty][Math.floor(Math.random() * sentences[difficulty].length)];
     setParagraph(randomSentence);
-  });
+  },[]);
 
+
+    // Handle submission
+  // const handleSubmit = () => {
+  
+  const handleSubmit = useCallback(() => {
+    setIsRunning(false);
+    calculateResults();
+    setUserInput("");
+    setTimeLeft(30);
+    setIsRunning(false);
+    setRandomSentence();
+    textareaRef.current.focus();
+  }, []);  
   // Initialize the first sentence
   // useEffect(() => {
   //   setRandomSentence();
@@ -117,17 +130,7 @@ const App = () => {
     }
   };
 
-  // Handle submission
-  // const handleSubmit = () => {
-  const handleSubmit = useCallback(() => {
-  setIsRunning(false);
-  calculateResults();
-  setUserInput("");
-  setTimeLeft(30);
-  setIsRunning(false);
-  setRandomSentence();
-  textareaRef.current.focus();
-}, []);
+
 
 
   // Toggle theme
