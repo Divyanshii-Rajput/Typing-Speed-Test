@@ -65,6 +65,30 @@ const App = () => {
  }, [difficulty]);
 
 
+   // Calculate WPM and Accuracy
+  const calculateResults = () => {
+    const wordsTyped = userInput.trim().split(/\s+/).length;
+    const timeInMinutes = (30 - timeLeft) / 60;
+    const calculatedWpm = Math.round(wordsTyped / timeInMinutes);
+
+    const correctChars = userInput
+      .split("")
+      .filter((char, i) => char === paragraph[i]).length;
+    const calculatedAccuracy = Math.round(
+      (correctChars / paragraph.length) * 100
+    );
+
+    setWpm(calculatedWpm);
+    setAccuracy(calculatedAccuracy);
+
+    // Update highest WPM and Accuracy
+    if (calculatedWpm > highestWpm) {
+      setHighestWpm(calculatedWpm);
+    }
+    if (calculatedAccuracy > highestAccuracy) {
+      setHighestAccuracy(calculatedAccuracy);
+    }
+  };
     // Handle submission
   // const handleSubmit = () => {
   
@@ -105,30 +129,7 @@ const App = () => {
     setUserInput(e.target.value);
   };
 
-  // Calculate WPM and Accuracy
-  const calculateResults = () => {
-    const wordsTyped = userInput.trim().split(/\s+/).length;
-    const timeInMinutes = (30 - timeLeft) / 60;
-    const calculatedWpm = Math.round(wordsTyped / timeInMinutes);
-
-    const correctChars = userInput
-      .split("")
-      .filter((char, i) => char === paragraph[i]).length;
-    const calculatedAccuracy = Math.round(
-      (correctChars / paragraph.length) * 100
-    );
-
-    setWpm(calculatedWpm);
-    setAccuracy(calculatedAccuracy);
-
-    // Update highest WPM and Accuracy
-    if (calculatedWpm > highestWpm) {
-      setHighestWpm(calculatedWpm);
-    }
-    if (calculatedAccuracy > highestAccuracy) {
-      setHighestAccuracy(calculatedAccuracy);
-    }
-  };
+ 
 
 
 
