@@ -119,16 +119,15 @@ const App = () => {
   // Handle submission
   // const handleSubmit = () => {
   const handleSubmit = useCallback(() => {
-    setIsRunning(false);
-    calculateResults();
+  setIsRunning(false);
+  calculateResults();
+  setUserInput("");
+  setTimeLeft(30);
+  setIsRunning(false);
+  setRandomSentence();
+  textareaRef.current.focus();
+}, []);
 
-    // Reset the test and set a new sentence
-    setUserInput("");
-    setTimeLeft(30);
-    setIsRunning(false);
-    setRandomSentence(); // Set a new sentence based on the current difficulty
-    textareaRef.current.focus();
-  };
 
   // Toggle theme
   const toggleTheme = () => {
