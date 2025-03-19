@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useCallback } from 'react';
 import "./App.css";
 
 // Sentences for each difficulty level
