@@ -56,16 +56,22 @@ const App = () => {
   const textareaRef = useRef(null);
 
   // Set a random paragraph based on difficulty
-  const setRandomSentence = () => {
+  // const setRandomSentence = () => {
+  const setRandomSentence = useCallback(() => {
     const randomSentence =
       sentences[difficulty][Math.floor(Math.random() * sentences[difficulty].length)];
     setParagraph(randomSentence);
   };
 
   // Initialize the first sentence
+  // useEffect(() => {
+  //   setRandomSentence();
+  // }, [difficulty]);
+
   useEffect(() => {
-    setRandomSentence();
-  }, [difficulty]);
+  setRandomSentence();
+  handleSubmit();
+}, [setRandomSentence, handleSubmit]); 
 
   // Start the timer
   useEffect(() => {
@@ -111,7 +117,8 @@ const App = () => {
   };
 
   // Handle submission
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     setIsRunning(false);
     calculateResults();
 
