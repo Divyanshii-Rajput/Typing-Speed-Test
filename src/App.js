@@ -62,7 +62,7 @@ const App = () => {
     const randomSentence =
       sentences[difficulty][Math.floor(Math.random() * sentences[difficulty].length)];
     setParagraph(randomSentence);
-  },[]);
+ }, [difficulty]);
 
 
     // Handle submission
@@ -76,7 +76,7 @@ const App = () => {
     setIsRunning(false);
     setRandomSentence();
     textareaRef.current.focus();
-  }, []);  
+ }, [calculateResults, setRandomSentence]);  
   // Initialize the first sentence
   // useEffect(() => {
   //   setRandomSentence();
