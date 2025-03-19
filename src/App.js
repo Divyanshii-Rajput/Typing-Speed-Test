@@ -61,7 +61,7 @@ const App = () => {
     const randomSentence =
       sentences[difficulty][Math.floor(Math.random() * sentences[difficulty].length)];
     setParagraph(randomSentence);
-  };
+  });
 
   // Initialize the first sentence
   // useEffect(() => {
